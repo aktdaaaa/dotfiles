@@ -43,6 +43,7 @@ end, { range = true })
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
+    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import your plugins
     { import = "plugins" },
   },
