@@ -64,14 +64,6 @@ vim.api.nvim_set_keymap(
   ":bdelete<cr>",
   { desc = "quit buffer", noremap = true, silent = true }
 )
--- Yankした範囲をハイライトさせる
-vim.api.nvim_set_hl(0, "YankHighlight", { bg = "#553311" })
-vim.api.nvim_create_autocmd("TextYankPost", {
-  pattern = "*",
-  callback = function()
-    vim.highlight.on_yank({ higroup = "YankHighlight", timeout = 200 })
-  end,
-})
 -- window
 vim.api.nvim_set_keymap(
   "n",
@@ -85,6 +77,14 @@ vim.api.nvim_set_keymap(
   ":close<cr>",
   { desc = "close window", noremap = true, silent = true }
 )
+-- Yankした範囲をハイライトさせる
+vim.api.nvim_set_hl(0, "YankHighlight", { bg = "#553311" })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank({ higroup = "YankHighlight", timeout = 200 })
+  end,
+})
 
 -- フォーマットコマンド
 vim.api.nvim_create_user_command("Format", function(args)
