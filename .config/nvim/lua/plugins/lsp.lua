@@ -128,6 +128,10 @@ return {
       capabilities = capabilities,
       root_dir = util.root_pattern("deno.json", "deno.jsonc"),
     })
+    -- astro.js
+    lspconfig.astro.setup({
+      capabilities = capabilities,
+    })
     -- Go
     lspconfig.gopls.setup({
       capabilities = capabilities,
