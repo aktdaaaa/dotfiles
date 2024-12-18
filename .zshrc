@@ -44,9 +44,12 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 
-# exa
+# eza
 alias ll="eza -l"
 alias la="eza -la"
+
+# bat
+alias cat="bat"
 
 # gitui
 alias gu=gitui
