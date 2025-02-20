@@ -12,7 +12,7 @@ local config = wezterm.config_builder()
 config.color_scheme = "TokyoNight Storm"
 
 -- 背景ぼかし
-config.window_background_opacity = 0.3
+-- config.window_background_opacity = 0.3
 config.macos_window_background_blur = 20
 config.tab_bar_at_bottom = true
 
