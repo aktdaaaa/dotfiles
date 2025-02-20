@@ -63,6 +63,7 @@ return {
             },
           },
         },
+        { name = "copilot" },
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
@@ -76,6 +77,7 @@ return {
             maxwidth = 50,
             ellipsis_char = "...",
             show_labelDetails = true,
+            symbol_map = { Copilot = "" }
           })(entry, item)
           if color_item.abbr_hl_group then
             item.kind_hl_group = color_item.abbr_hl_group
