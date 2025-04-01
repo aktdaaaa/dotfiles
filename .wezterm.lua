@@ -51,6 +51,11 @@ config.keys = {
     mods = "CMD",
     action = act.CloseCurrentPane({ confirm = true }),
   },
+  {
+    key = 'p',
+    mods = 'CMD',
+    action = wezterm.action.ShowTabNavigator
+  },
 }
 
 -- and finally, return the configuration to wezterm
