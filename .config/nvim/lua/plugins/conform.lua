@@ -2,7 +2,7 @@ return {
   "stevearc/conform.nvim",
   event = "VeryLazy",
   opts = function()
-    local web_formatter = { "prettierd", stop_after_first = true }
+    local web_formatter = { "prettierd", "prettier", stop_after_first = true }
     return {
       formatters_by_ft = {
         lua = { "stylua" },

@@ -108,6 +108,15 @@ return {
     local util = require("lspconfig.util")
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     -- VueだけでなくTypeScriptやReactもVolarを使う
+    lspconfig.eslint.setup({
+      --- ...
+      on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          command = "EslintFixAll",
+        })
+      end,
+    })
     lspconfig.volar.setup({
       capabilities = capabilities,
       filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
@@ -140,11 +149,20 @@ return {
       filetypes = { "go" },
       settings = {
         gopls = {
+          analyses = {
+            unusedparams = true,
+          },
+          staticcheck = true,
           gofumpt = true,
         },
       },
     })
-    lspconfig.golangci_lint_ls.setup({ capabilities = capabilities })
+    lspconfig.golangci_lint_ls.setup({
+      capabilities = capabilities,
+      init_options = {
+        command = { "golangci-lint", "run", "--out-format=json" }
+      }
+    })
     -- Lua
     lspconfig.lua_ls.setup({
       capabilities = capabilities,
