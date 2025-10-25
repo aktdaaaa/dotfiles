@@ -22,6 +22,8 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 -- 検索リセット
 vim.keymap.set("n", "<Esc>", ":noh<CR><Esc>", { desc = "Clear search highlight" })
+-- jj でインサートモードを抜ける
+vim.keymap.set("i", "jj", "<Esc>", { desc = "Exit insert mode" })
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
