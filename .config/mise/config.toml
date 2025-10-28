@@ -34,6 +34,8 @@ awscli = "latest"
 terraformer = "latest"
 "npm:claude" = "latest"
 "npm:@anthropic-ai/claude-code" = "latest"
+codex = "latest"
+"npm:@vtsls/language-server" = "latest"
 
 [settings]
 experimental = true
