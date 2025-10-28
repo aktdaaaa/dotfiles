@@ -104,12 +104,10 @@ return {
         },
       }),
     })
-    local lspconfig = require("lspconfig")
-    local util = require("lspconfig.util")
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    -- VueだけでなくTypeScriptやReactもVolarを使う
-    lspconfig.eslint.setup({
-      --- ...
+
+    -- ESLint
+    vim.lsp.config('eslint', {
       on_attach = function(client, bufnr)
         vim.api.nvim_create_autocmd("BufWritePre", {
           buffer = bufnr,
@@ -117,7 +115,15 @@ return {
         })
       end,
     })
-    lspconfig.volar.setup({
+
+    -- TypeScript/JavaScript (vtsls)
+    vim.lsp.config('vtsls', {
+      capabilities = capabilities,
+      filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+    })
+
+    -- VueだけでなくTypeScriptやReactもVolarを使う
+    vim.lsp.config('vue_ls', {
       capabilities = capabilities,
       filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
       init_options = {
@@ -126,25 +132,31 @@ return {
         },
       },
     })
-    lspconfig.tailwindcss.setup({
+
+    -- Tailwind CSS
+    vim.lsp.config('tailwindcss', {
       capabilities = capabilities,
-      root_dir = util.root_pattern(
+      root_markers = {
         "tailwind.config.js",
         "tailwind.config.cjs",
         "tailwind.config.mjs",
         "tailwind.config.ts"
-      ),
+      },
     })
-    lspconfig.denols.setup({
+
+    -- Deno
+    vim.lsp.config('denols', {
       capabilities = capabilities,
-      root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+      root_markers = { "deno.json", "deno.jsonc" },
     })
-    -- astro.js
-    lspconfig.astro.setup({
+
+    -- Astro.js
+    vim.lsp.config('astro', {
       capabilities = capabilities,
     })
+
     -- Go
-    lspconfig.gopls.setup({
+    vim.lsp.config('gopls', {
       capabilities = capabilities,
       filetypes = { "go" },
       settings = {
@@ -157,14 +169,17 @@ return {
         },
       },
     })
-    lspconfig.golangci_lint_ls.setup({
+
+    -- golangci-lint
+    vim.lsp.config('golangci_lint_ls', {
       capabilities = capabilities,
       init_options = {
         command = { "golangci-lint", "run", "--out-format=json" }
       }
     })
+
     -- Lua
-    lspconfig.lua_ls.setup({
+    vim.lsp.config('lua_ls', {
       capabilities = capabilities,
       settings = {
         Lua = {
@@ -173,6 +188,19 @@ return {
           },
         },
       },
+    })
+
+    -- すべてのLSPを有効化
+    vim.lsp.enable({
+      'eslint',
+      'vtsls',
+      'vue_ls',
+      'tailwindcss',
+      'denols',
+      'astro',
+      'gopls',
+      'golangci_lint_ls',
+      'lua_ls',
     })
     -- LSP key bindings
     vim.api.nvim_create_autocmd("LspAttach", {
