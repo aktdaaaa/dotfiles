@@ -145,15 +145,15 @@ return {
     })
 
     -- Deno
-    vim.lsp.config('denols', {
-      capabilities = capabilities,
-      root_markers = { "deno.json", "deno.jsonc" },
-    })
+    -- vim.lsp.config('denols', {
+    --   capabilities = capabilities,
+    --   root_markers = { "deno.json", "deno.jsonc" },
+    -- })
 
     -- Astro.js
-    vim.lsp.config('astro', {
-      capabilities = capabilities,
-    })
+    -- vim.lsp.config('astro', {
+    --   capabilities = capabilities,
+    -- })
 
     -- Go
     vim.lsp.config('gopls', {
@@ -196,8 +196,8 @@ return {
       'vtsls',
       'vue_ls',
       'tailwindcss',
-      'denols',
-      'astro',
+      -- 'denols',
+      -- 'astro',
       'gopls',
       'golangci_lint_ls',
       'lua_ls',
