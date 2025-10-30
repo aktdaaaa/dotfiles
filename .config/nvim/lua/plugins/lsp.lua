@@ -174,7 +174,7 @@ return {
     vim.lsp.config('golangci_lint_ls', {
       capabilities = capabilities,
       init_options = {
-        command = { "golangci-lint", "run", "--out-format=json" }
+        command = { "golangci-lint", "run", "--output.json.path", "stdout", "--show-stats=false", "--issues-exit-code=1" }
       }
     })
 

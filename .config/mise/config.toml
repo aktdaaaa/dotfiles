@@ -11,7 +11,7 @@ go = "1.23.4"
 "go:golang.org/x/tools/gopls" = "latest"
 "go:mvdan.cc/gofumpt" = "latest"
 "go:github.com/jesseduffield/lazydocker" = "latest"
-golangci-lint = "latest"
+golangci-lint = "2"
 lazygit = "latest"
 lua-language-server = "latest"
 mysql = "latest"
@@ -36,6 +36,7 @@ terraformer = "latest"
 "npm:@anthropic-ai/claude-code" = "latest"
 codex = "latest"
 "npm:@vtsls/language-server" = "latest"
+gh = "latest"
 
 [settings]
 experimental = true
