@@ -190,6 +190,11 @@ return {
       },
     })
 
+    -- Terraform
+    vim.lsp.config('terraformls', {
+      capabilities = capabilities,
+    })
+
     -- すべてのLSPを有効化
     vim.lsp.enable({
       'eslint',
@@ -201,6 +206,7 @@ return {
       'gopls',
       'golangci_lint_ls',
       'lua_ls',
+      'terraformls',
     })
     -- LSP key bindings
     vim.api.nvim_create_autocmd("LspAttach", {
