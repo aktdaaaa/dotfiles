@@ -1,6 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
-  event = { "BufNewFile", "BufRead", "BufWritePost", "BufReadPost", "InsertLeave" },
+  event = { "BufNewFile", "BufReadPre", "BufWritePost", "BufReadPost", "InsertLeave" },
   dependencies = {
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/nvim-cmp" },
@@ -9,7 +9,7 @@ return {
     { "hrsh7th/cmp-cmdline" },
     { "b0o/schemastore.nvim" },
     { "onsails/lspkind.nvim" },
-    { "L3MON4D3/LuaSnip" },
+    { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
     { "saadparwaiz1/cmp_luasnip" },
   },
   config = function()

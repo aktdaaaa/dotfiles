@@ -79,6 +79,44 @@ vim.api.nvim_set_keymap(
   ":close<cr>",
   { desc = "close window", noremap = true, silent = true }
 )
+
+-- Copy the current file path relative to the surrounding git repo
+local function copy_repo_file_path()
+  local path = vim.api.nvim_buf_get_name(0)
+  if path == "" then
+    vim.notify("No file associated with this buffer", vim.log.levels.WARN, {
+      title = "Copy repo file path",
+    })
+    return
+  end
+
+  local file_dir = vim.fn.fnamemodify(path, ":h")
+  local git_root_output = vim.fn.systemlist({ "git", "-C", file_dir, "rev-parse", "--show-toplevel" })
+  if vim.v.shell_error ~= 0 or not git_root_output[1] or git_root_output[1] == "" then
+    vim.notify("Git root not found for current buffer", vim.log.levels.WARN, {
+      title = "Copy repo file path",
+    })
+    return
+  end
+
+  local git_root = git_root_output[1]:gsub("/+$", "")
+  local relative_path = path:gsub("^" .. vim.pesc(git_root) .. "/?", "")
+  if relative_path == "" then
+    relative_path = "."
+  end
+
+  vim.fn.setreg("+", relative_path)
+  vim.notify("Copied repo file path:\n" .. relative_path, vim.log.levels.INFO, {
+    title = "Copy repo file path",
+  })
+end
+
+vim.keymap.set("n", "<leader>yf", copy_repo_file_path, {
+  desc = "Copy repo file path to clipboard",
+})
+vim.api.nvim_create_user_command("CopyRepoFilePath", copy_repo_file_path, {
+  desc = "Copy current file path relative to git root",
+})
 -- Yankした範囲をハイライトさせる
 vim.api.nvim_set_hl(0, "YankHighlight", { bg = "#553311" })
 vim.api.nvim_create_autocmd("TextYankPost", {
