@@ -221,7 +221,7 @@ return {
         -- 定義に移動 (Lspsaga goto_definition は期待しない定義に飛んでしまうことがある)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
         -- 実装へ移動
-        vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
+        vim.keymap.set("n", "gI", "<cmd>Lspsaga finder imp<cr>", opts)
         -- 参照元へ移動
         vim.keymap.set("n", "gr", "<cmd>Lspsaga finder ref<cr>", opts)
         -- シンボルリネーム
