@@ -16,7 +16,10 @@ config.color_scheme = "TokyoNight Storm"
 config.macos_window_background_blur = 20
 config.tab_bar_at_bottom = true
 
-config.font = wezterm.font("FiraCode Nerd Font Mono", { weight = "Bold" })
+config.font = wezterm.font_with_fallback({
+  { family = "FiraCode Nerd Font Mono", weight = "Bold" },
+  "Hiragino Sans",
+})
 config.font_size = 15.0
 
 config.keys = {
