@@ -78,3 +78,5 @@ source <(fzf --zsh)
 eval "$(starship init zsh)"
 
 
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"

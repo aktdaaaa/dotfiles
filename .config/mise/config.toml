@@ -14,7 +14,7 @@ golangci-lint = "latest"
 lazygit = "latest"
 lua-language-server = "latest"
 mysql = "latest"
-node = "latest"
+node = "22"
 "npm:@biomejs/biome" = "latest"
 "npm:@vue/language-server" = "latest"
 "npm:eslint" = "latest"
@@ -41,6 +41,7 @@ saml2aws = "latest"
 yazi = "latest"
 "npm:runme" = "latest"
 xc = "latest"
+"npm:@google/gemini-cli" = "latest"
 
 [settings]
 experimental = true
