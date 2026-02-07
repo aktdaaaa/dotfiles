@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(cd:*)",
+      "Bash(cat:*)",
+      "Bash(pwd:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(sed:*)",
+      "Bash(awk:*)",
+      "Bash(sort:*)",
+      "Bash(uniq:*)",
+      "Bash(wc:*)",
+      "Bash(jq:*)",
+      "Bash(echo:*)",
+      "Bash(git branch:*)",
+      "Bash(git status:*)",
+      "Bash(git pull:*)",
+      "Bash(make lint:*)",
+      "Bash(make mockgen:*)",
+      "Bash(make swag:*)",
+      "Bash(docker compose exec miive-server bash script/tests/unit_test_all.sh:*)",
+      "Bash(docker compose exec miive-server bash script/tests/unit_test.sh:*)",
+      "Bash(docker compose exec miive-server bash script/tests/test_e2e.sh:*)",
+      "Bash(gemini:*)",
+      "Bash(go list:*)",
+      "Bash(go mod tidy:*)",
+      "Bash(go build:*)",
+      "Bash(go mod verify:*)",
+      "Bash(gh issue list:*)",
+      "Bash(gh issue view:*)",
+      "Bash(gh pr list:*)",
+      "Bash(rg:*)",
+      "Bash(go test:*)",
+      "Bash(rm:*)",
+      "Bash(docker compose exec:*)",
+      "Bash(mv:*)",
+      "Bash(golangci-lint run:*)",
+      "Bash(go generate:*)",
+      "Bash(docker exec:*)",
+      "Bash(make:*)",
+      "Bash(docker compose logs:*)",
+      "Bash(timeout 180 docker compose exec miive-server bash script/tests/test_e2e.sh)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(go tool cover:*)",
+      "Bash(gofumpt:*)",
+      "Bash(go fmt:*)",
+      "Bash(go vet:*)",
+      "Bash(go env:*)",
+      "Bash(wire)",
+      "Bash(go run:*)",
+      "Read(//tmp/**)",
+      "mcp__context7__get-library-docs",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr diff:*)",
+      "WebSearch",
+      "Bash(open \"raycast://extensions/raycast/raycast/confetti\")",
+      "Bash(afplay:*)",
+      "mcp__aws-knowledge__aws___read_documentation",
+      "mcp__aws-knowledge__aws___search_documentation",
+      "mcp__context7__resolve-library-id"
+    ],
+    "deny": [],
+    "defaultMode": "acceptEdits"
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/notify.sh"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/notify.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/notify.sh"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/notify.sh"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/notify.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "context7@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "sentry@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "circleback@claude-plugins-official": false,
+    "Notion@claude-plugins-official": true,
+    "slack@claude-plugins-official": true,
+    "example-skills@anthropic-agent-skills": true
+  },
+  "language": "Japanese",
+  "alwaysThinkingEnabled": true
+}
