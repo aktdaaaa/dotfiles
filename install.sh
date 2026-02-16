@@ -166,6 +166,7 @@ setup_claude() {
   # ディレクトリ
   link_dir "$claude_src/commands" "$claude_home/commands"
   link_dir "$claude_src/skills"   "$claude_home/skills"
+  link_dir "$claude_src/rules"    "$claude_home/rules"
 
   # hooks（debug.log と共存するためスクリプト単位）
   link_file "$claude_src/hooks/notify.sh" "$claude_home/hooks/notify.sh"
