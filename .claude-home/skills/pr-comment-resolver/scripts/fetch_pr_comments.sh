@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Fetch all PR comments (review comments + issue comments + reviews) as structured JSON
+# Fetch all PR comments (review comments + issue comments + reviews) and changed files as structured JSON
 # Usage: fetch_pr_comments.sh [PR_NUMBER]
 #   If PR_NUMBER is omitted, auto-detects from current branch.
 
@@ -23,6 +23,9 @@ echo "  \"repo\": \"${REPO}\","
 
 # PR basic info
 echo "  \"pr_info\": $(gh pr view "$PR_NUMBER" --json title,body,url,headRefName,baseRefName,state),"
+
+# Changed files list
+echo "  \"changed_files\": $(gh pr view "$PR_NUMBER" --json files --jq '.files' 2>/dev/null || echo '[]'),"
 
 # Review comments (inline code comments)
 echo "  \"review_comments\": $(gh api "repos/${REPO}/pulls/${PR_NUMBER}/comments" --paginate 2>/dev/null || echo '[]'),"
