@@ -1,5 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "permissions": {
     "allow": [
       "Bash(ls:*)",
@@ -32,6 +35,7 @@
       "Bash(gh issue list:*)",
       "Bash(gh issue view:*)",
       "Bash(gh pr list:*)",
+      "Bash(gh run view:*)",
       "Bash(rg:*)",
       "Bash(go test:*)",
       "Bash(rm:*)",
@@ -61,62 +65,53 @@
       "Bash(afplay:*)",
       "mcp__aws-knowledge__aws___read_documentation",
       "mcp__aws-knowledge__aws___search_documentation",
-      "mcp__context7__resolve-library-id"
+      "mcp__context7__resolve-library-id",
+      "Bash(app/usecase/charge.go )",
+      "Bash(app/usecase/charge_test.go )",
+      "Bash(app/usecase/wallet_point.go )",
+      "Bash(app/usecase/miive_card.go )",
+      "Bash(app/usecase/payment_evidence_request.go )",
+      "Bash(app/handler/charge.go )",
+      "Bash(app/handler/wallet_point.go )",
+      "Bash(app/handler/bank_charge.go )",
+      "Bash(app/handler/card.go )",
+      "Bash(app/handler/history.go )",
+      "Bash(handler/miiveapp/transfer.go )",
+      "Bash(batchjob/userbill/service/user_bill.go )",
+      "Bash(batchjob/userbill/service/user_bill_test.go )",
+      "Bash(operation/usecase/miive_money_adjustment_history.go )",
+      "Bash(operation/usecase/miive_money_adjustment_history_test.go )",
+      "Bash(operation/usecase/point_box_payment_evidence.go )",
+      "Bash(operation/handler/transaction_history.go)",
+      "Bash(git -C /Users/pc-025/miive-server diff schema/miive.sql)",
+      "Bash(git -C /Users/pc-025/miive-server diff Makefile)",
+      "Bash(git -C /Users/pc-025/miive-server diff go.mod)",
+      "Bash(.)",
+      "Bash(git -C /Users/pc-025/miive-server diff account/handler/account.go)",
+      "Bash(git -C /Users/pc-025/miive-server diff account/account.go)",
+      "Bash(mise run lint:*)",
+      "Bash(gh run list:*)",
+      "mcp__context7__query-docs",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(gh api:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:medium.com)",
+      "WebFetch(domain:thebugshots.dev)",
+      "WebFetch(domain:grafana.com)",
+      "WebFetch(domain:ksysoev.github.io)",
+      "Bash(gh auth:*)",
+      "Bash(bash:*)",
+      "WebFetch(domain:www.conventionalcommits.org)",
+      "WebFetch(domain:aws.github.io)",
+      "WebFetch(domain:oneuptime.com)",
+      "WebFetch(domain:postmarkapp.com)"
     ],
     "deny": [],
-    "defaultMode": "acceptEdits"
-  },
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/notify.sh"
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "matcher": "idle_prompt",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/notify.sh"
-          }
-        ]
-      },
-      {
-        "matcher": "permission_prompt",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/notify.sh"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/notify.sh"
-          }
-        ]
-      }
-    ],
-    "SubagentStop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/notify.sh"
-          }
-        ]
-      }
-    ]
+    "defaultMode": "plan"
   },
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
@@ -131,8 +126,25 @@
     "circleback@claude-plugins-official": false,
     "Notion@claude-plugins-official": true,
     "slack@claude-plugins-official": true,
-    "example-skills@anthropic-agent-skills": true
+    "example-skills@anthropic-agent-skills": true,
+    "superpowers@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "cc-skills-golang@samber": true
+  },
+  "extraKnownMarketplaces": {
+    "samber": {
+      "source": {
+        "source": "github",
+        "repo": "samber/cc"
+      }
+    }
   },
   "language": "Japanese",
-  "alwaysThinkingEnabled": true
+  "effortLevel": "high",
+  "autoUpdatesChannel": "latest",
+  "skipDangerousModePermissionPrompt": true,
+  "editorMode": "vim",
+  "preferredNotifChannel": "ghostty",
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": true
 }
