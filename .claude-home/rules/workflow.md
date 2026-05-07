@@ -10,14 +10,11 @@
 - 影響範囲を正確に把握する（直接変更するファイルだけでなく、間接的に影響を受ける箇所も含む）
 - 既存の型定義、テスト、マイグレーションなど関連リソースも確認する
 - 調査結果をプロジェクトルートにマークダウンファイルとしてまとめる
-  - ファイル名例: `research_<トピック名>.md`
-  - 内容: 調査対象のファイル一覧、現在の実装の概要、既存パターン、注意点・制約
 
 ## ステップ2: 実装計画の作成
 
 調査結果を元に、実装計画をプロジェクトルートにマークダウンファイルとして作成する。
 
-- ファイル名例: `plan_<トピック名>.md`
 - 計画には以下を含めること:
   - 変更対象ファイルの一覧と各ファイルの変更概要
   - 具体的なコードスニペット（新規追加・変更するコードの実例）
@@ -25,7 +22,41 @@
   - 影響範囲と考慮事項
 - コードスニペットは省略せず、実際に書くコードに近い形で記載する
 
+## 利用するスキル
+
+会話開始時、および各タスクに着手する前に、以下のスキルセットを必ず参照・適用すること。
+
+### 共通: superpowers
+
+- すべての会話・タスクで `superpowers` スキルセットを利用する
+- 特に以下のスキルは適用条件に合致した時点で **必ず** 起動する
+  - `superpowers:brainstorming` — 新機能・新コンポーネント・新規実装の前
+  - `superpowers:writing-plans` — マルチステップな仕様・要件がある場合
+  - `superpowers:executing-plans` / `superpowers:subagent-driven-development` — 計画を実行に移すとき
+  - `superpowers:test-driven-development` — 機能実装・バグ修正のコード着手前
+  - `superpowers:systematic-debugging` — バグ・テスト失敗・予期せぬ挙動に遭遇したとき
+  - `superpowers:verification-before-completion` — 完了・修正済みと宣言する前
+- スキルが適用されうる可能性が **1% でもある** 場合は必ず Skill ツールで起動する。「自明だから不要」「今回は軽いタスクだから」と省略しない。
+
+### Golang プロジェクト: cc-skills-golang
+
+プロジェクトルートに `go.mod` または任意の `*.go` ファイルが存在する場合、そのプロジェクトを Go プロジェクトとみなし、上記 superpowers に **加えて** `cc-skills-golang`（`samber` マーケットプレイス）配下のスキルを必ず利用する。
+
+- 代表的なスキルと適用タイミング:
+  - `golang-code-style` / `golang-naming` / `golang-modernize` — コード新規作成・編集時
+  - `golang-error-handling` — エラー処理を追加・変更するとき
+  - `golang-testing` / `golang-stretchr-testify` — テスト追加・修正時
+  - `golang-concurrency` / `golang-context` — goroutine / `context.Context` を扱うとき
+  - `golang-database` — DB アクセス層を変更するとき
+  - `golang-performance` / `golang-benchmark` — パフォーマンス改善・計測時
+  - `golang-security` / `golang-safety` — 認証・認可・入力検証など安全性に関わる変更時
+  - `golang-design-patterns` / `golang-structs-interfaces` / `golang-dependency-injection` — 設計判断時
+- 上記以外にも `cc-skills-golang` 配下に該当スキルがある場合は同様に参照する。
+- `cc-skills-golang` プラグインが未有効の場合はユーザーに有効化を促す（`/plugin install cc-skills-golang@samber`）。
+
 ## 重要
 
 - 調査と計画のステップを飛ばして実装に入ってはならない
 - ユーザーが明示的に「調査不要」「計画不要」と指示した場合のみ、該当ステップを省略できる
+- superpowers / cc-skills-golang のスキル起動は、ユーザー指示・CLAUDE.md・本ルールの優先順位を超えない範囲で行う（ユーザー指示が常に最優先）
+- スキル利用を理由に「ステップ1: 現状調査」「ステップ2: 実装計画の作成」を省略してはならない
