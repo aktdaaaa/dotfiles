@@ -9,7 +9,7 @@ return {
     { "hrsh7th/cmp-cmdline" },
     { "b0o/schemastore.nvim" },
     { "onsails/lspkind.nvim" },
-    { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
+    { "L3MON4D3/LuaSnip",        build = "make install_jsregexp" },
     { "saadparwaiz1/cmp_luasnip" },
   },
   config = function()
@@ -166,6 +166,16 @@ return {
           },
           staticcheck = true,
           gofumpt = true,
+          semanticTokens = true,
+          hints = {
+            assignVariableTypes = true,
+            compositeLiteralFields = true,
+            compositeLiteralTypes = true,
+            constantValues = true,
+            functionTypeParameters = true,
+            parameterNames = true,
+            rangeVariableTypes = true,
+          },
         },
       },
     })
@@ -241,7 +251,10 @@ return {
         end
 
         -- 深刻度が高い方を優先して表示
-        vim.diagnostic.config({ severity_sort = true })
+        vim.diagnostic.config({
+          severity_sort = true,
+          virtual_text = true,
+        })
       end,
     })
   end,

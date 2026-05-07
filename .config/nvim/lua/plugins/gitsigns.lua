@@ -3,7 +3,8 @@ return {
   event = { "BufNewFile", "BufReadPre" },
   opts = {},
   keys = {
-    -- { "nh", "<cmd>Gitsigns next_hunk<cr>", desc = "next hunk" },
-    -- { "ph", "<cmd>Gitsigns prev_hunk<cr>", desc = "prev hunk" },
+    { "<leader>nh", "<cmd>Gitsigns next_hunk<cr>", desc = "next hunk" },
+    { "<leader>ph", "<cmd>Gitsigns prev_hunk<cr>", desc = "prev hunk" },
+    { "<leader>gb", "<cmd>Gitsigns blame<cr>",     desc = "show blame" },
   },
 }
